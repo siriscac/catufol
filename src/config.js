@@ -65,6 +65,7 @@ Configuration.prototype.wpRunBase = function () {
     };
     base.module.preLoaders.push(wp.loaders.tslint);
     base.module.loaders.push(wp.loaders.ts);
+    base.module.loaders.push(wp.loaders.js);
     base.module.loaders.push(wp.loaders.html);
     base.module.loaders.push(wp.loaders.raw);
     base.module.loaders.push(wp.loaders.json);
@@ -86,7 +87,7 @@ Configuration.prototype.wpBuild = function () {
     base.plugins.push(new HtmlWebpackPlugin({filename: 'index.html', template: './app/index.html'}));
     base.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
     base.plugins.push(new webpack.optimize.UglifyJsPlugin());
-    base.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', `${conf.appName}/bundles/vendor.bundle.[hash].js`));
+    base.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', `${conf.appName}/bundles/vendor.bundle.[hash].js`, Infinity));
     return base;
 };
 
@@ -100,7 +101,7 @@ Configuration.prototype.wpRun = function () {
     base.entry.app.push(conf.devEntryFile);
     base.plugins.push(new webpack.HotModuleReplacementPlugin());
     base.plugins.push(new HtmlWebpackPlugin({filename: 'index.html', template: './app/index.html'}));
-    base.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', `${conf.appName}/bundles/vendor.bundle.js`));
+    base.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', `${conf.appName}/bundles/vendor.bundle.js`, Infinity));
     return base;
 };
 

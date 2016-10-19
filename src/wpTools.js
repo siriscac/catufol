@@ -87,6 +87,19 @@ const loaders = {
         test: /\.(?:tjs|tjson|xml)$/,
         loader: 'raw-loader'
     },
+    js: {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [
+            /node_modules(\\|\/)@angular/
+        ],
+        exclude: [
+            /\.umd\.js$/
+        ],
+        query: {
+            presets: ['es2015']
+        }
+    },
     istambul: {
         test: /\.(?:js|ts)$/,
         include: appPath,
