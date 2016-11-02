@@ -135,6 +135,11 @@ Configuration.prototype.karmaBase = function () {
     const files = [
         'node_modules/zone.js/dist/zone.min.js',
         'node_modules/zone.js/dist/async-test.js',
+        'node_modules/zone.js/dist/proxy.js',
+        'node_modules/zone.js/dist/sync-test.js',
+        'node_modules/zone.js/dist/async-test.js',
+        'node_modules/zone.js/dist/fake-async-test.js',
+        'node_modules/zone.js/dist/jasmine-patch.js',
         karma.phPolyfill,
         'node_modules/reflect-metadata/Reflect.js',
         karma.es6Shim,
